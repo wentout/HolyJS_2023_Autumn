@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "mnemonica": "^0.9.970"
+    "mnemonica": "^0.9.973",
+    "ts-node": "^10.9.1"
   }
 }
