@@ -1,17 +1,13 @@
 import { apply, define } from 'mnemonica';
 
-import { FirstType, SecondType, ThirdType } from './init';
-
-FirstType.registerHook('preCreation', (opts) => {
-	debugger;
-	console.dir('opts', opts);
-});
+import { FirstType, SecondType, ThirdType } from './example_init';
 
 FirstType.registerHook('preCreation', ({ existentInstance }) => {
 	console.log('pre', existentInstance);
 });
 
-FirstType.registerHook('postCreation', ({ existentInstance, inheritedInstance }) => {
+FirstType.registerHook('postCreation', ({ existentInstance, inheritedInstance, TypeName }) => {
+	console.log('post TypeName', TypeName);
 	console.log('post', existentInstance, inheritedInstance);
 });
 
@@ -33,7 +29,7 @@ ThirdType.registerHook('postCreation', ({ existentInstance, inheritedInstance })
 
 debugger;
 
-const first = new FirstType();
+const first = new FirstType('FirstType');
 
 // { first: undefined, second: string }
 debugger;
@@ -63,8 +59,8 @@ ErroredType.registerHook('preCreation', ({ existentInstance }) => {
 	console.log('pre', existentInstance);
 });
 
-ErroredType.registerHook('postCreation', ({ inheritedInstance }) => {
-	console.log('post', inheritedInstance);
-});
+// ErroredType.registerHook('postCreation', ({ inheritedInstance }) => {
+// 	console.log('post', inheritedInstance);
+// });
 
 console.log(new ErroredType);
