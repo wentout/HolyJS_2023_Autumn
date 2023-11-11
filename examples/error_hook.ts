@@ -9,6 +9,7 @@ export const ErroredType = ThirdType.define('ErroredType', function (this: {
 });
 
 ErroredType.registerHook('creationError', ({ existentInstance, inheritedInstance }) => {
+	debugger;
 	console.log('creationError')
 	console.log(existentInstance, inheritedInstance);
 });

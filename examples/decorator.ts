@@ -16,6 +16,4 @@ class MyClass {
 const myInstance = new MyClass;
 console.log(myInstance.z);
 
-
-
-MyClass.define()
+// MyClass.define()
