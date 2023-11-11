@@ -1,4 +1,4 @@
-import { apply, define } from 'mnemonica';
+import { apply } from 'mnemonica';
 
 import { FirstType, SecondType, ThirdType } from './example_init';
 import { registerHooks } from './example_hooks';

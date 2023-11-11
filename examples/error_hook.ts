@@ -1,28 +1,27 @@
-import { define } from 'mnemonica';
+import { apply } from 'mnemonica';
+import { FirstType, SecondType, ThirdType } from './example_init';
 
-export const ErroredType = define('ErroredType', function (this: {
+export const ErroredType = ThirdType.define('ErroredType', function (this: {
 	errored: 'ErroredType',
 }) {
 	this.errored = 'ErroredType';
 	throw new Error('Special DEMO Error');
 });
 
-// ErroredType.registerHook('creationError', ({ existentInstance, inheritedInstance }) => {
-// 	console.log('creationError')
-// 	console.log(existentInstance, inheritedInstance);
-// });
-
-process.on('uncaughtException', (error) => {
-	console.error('uncaughtException', error);
+ErroredType.registerHook('creationError', ({ existentInstance, inheritedInstance }) => {
+	console.log('creationError')
+	console.log(existentInstance, inheritedInstance);
 });
 
-// ErroredType.registerHook('preCreation', ({ existentInstance }) => {
-// 	console.log('pre', existentInstance);
+// process.on('uncaughtException', (error) => {
+// 	debugger;
+// 	console.error('uncaughtException', error);
 // });
 
-// ErroredType.registerHook('postCreation', ({ inheritedInstance }) => {
-// 	console.log('post', inheritedInstance);
-// });
+const first = new FirstType('FirstType');
+const second = apply(first, SecondType);
+const third = apply(second, ThirdType);
 
-new ErroredType;
+
+new third.ErroredType;
 
