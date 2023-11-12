@@ -8,16 +8,16 @@ export const ErroredType = ThirdType.define('ErroredType', function (this: {
 	throw new Error('Special DEMO Error');
 });
 
-ErroredType.registerHook('creationError', ({ existentInstance, inheritedInstance }) => {
-	debugger;
-	console.log('creationError')
-	console.log(existentInstance, inheritedInstance);
-});
-
-// process.on('uncaughtException', (error) => {
+// ErroredType.registerHook('creationError', ({ existentInstance, inheritedInstance }) => {
 // 	debugger;
-// 	console.error('uncaughtException', error);
+// 	console.log('creationError')
+// 	console.log(existentInstance, inheritedInstance);
 // });
+
+process.on('uncaughtException', (error) => {
+	debugger;
+	console.error('uncaughtException', error);
+});
 
 const first = new FirstType('FirstType');
 const second = apply(first, SecondType);

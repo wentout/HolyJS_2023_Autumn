@@ -6,15 +6,14 @@ export const FirstType = define('SomeType', function (this: {
 	this.first = 'FirstType';
 });
 
-export const SecondType = FirstType.define('SecondType',
-	function (
-		this: {
-			first: undefined,
-			second: string,
-		}) {
-		this.first = undefined;
-		this.second = 'SecondType';
-	});
+export const SecondType = FirstType.define('SecondType', function (
+	this: {
+		first: undefined,
+		second: string,
+	}) {
+	this.first = undefined;
+	this.second = 'SecondType';
+}, {}, { strictChain: false });
 
 
 export const ThirdType = SecondType.define('ThirdType', class {
@@ -22,7 +21,7 @@ export const ThirdType = SecondType.define('ThirdType', class {
 	constructor() {
 		this.third = 'ThirdType';
 	}
-});
+}, {}, { strictChain: false });
 
 
 
