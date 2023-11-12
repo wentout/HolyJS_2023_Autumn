@@ -10,3 +10,9 @@ and for example you have to run something from examples, then you may do the fol
 ```bash
 $ npx --node-options="--inspect-brk" ts-node ./examples/error_hook.ts
 ```
+
+and for example you wish to compile it with different options
+
+```bash
+npx tsc --target es2022 --moduleResolution NodeNext --module NodeNext ./examples/decorator.ts
+```
