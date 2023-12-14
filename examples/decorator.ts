@@ -3,7 +3,7 @@ import { define, apply } from 'mnemonica';
 debugger;
 
 function decorate(parentClass?: unknown) {
-	const decorator = function<T extends { new(): unknown }>(cstr: T, s: ClassDecoratorContext<T>) {
+	const decorator = function<T extends { new(): unknown }>(cstr: T, s: ClassDecoratorContext<T>): T {
 		if (parentClass instanceof Object) {
 			// @ts-ignore
 			return parentClass.define(s.name, cstr) as unknown as typeof cstr;
